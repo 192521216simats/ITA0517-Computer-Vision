@@ -1,0 +1,29 @@
+import cv2
+
+# Read image
+image = cv2.imread("flower.jpg")
+
+# Check image
+if image is None:
+    print("Image not found")
+    exit()
+
+print("Image successfully loaded")
+
+# Display original image
+cv2.imshow("Original Image", image)
+
+# Apply Gaussian Blur
+blur = cv2.GaussianBlur(image, (15, 15), 0)
+
+# Display blurred image
+cv2.imshow("Gaussian Blur", blur)
+
+# Save blurred image
+cv2.imwrite("blurred_image.jpg", blur)
+
+print("Blurred image saved successfully")
+
+# Wait and close
+cv2.waitKey(0)
+cv2.destroyAllWindows()
