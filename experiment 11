@@ -1,0 +1,29 @@
+
+import cv2
+
+# Read the image
+img = cv2.imread(
+    r"C:\Users\sharo\OneDrive\Pictures\nature image.jpg"
+)
+
+if img is None:
+    print("Image not found! Check the image path.")
+else:
+    # Rotate image 180 degrees
+    rotated = cv2.rotate(img, cv2.ROTATE_180)
+
+    # Display original and rotated images
+    cv2.imshow("Original Image", img)
+    cv2.imshow("180 Degree Rotated Image", rotated)
+
+    # Save the output image
+    cv2.imwrite(
+        r"C:\Users\sharo\OneDrive\Desktop\ImageRotation\rotated180.jpg",
+        rotated
+    )
+
+    print("Image rotated 180 degrees successfully!")
+    print("Output saved as rotated180.jpg")
+
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
