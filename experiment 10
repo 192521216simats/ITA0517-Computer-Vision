@@ -1,0 +1,33 @@
+
+import cv2
+import os
+
+# Image file path
+image_path = r"C:\Users\sharo\OneDrive\Pictures\nature image.jpg"
+
+# Read the image
+img = cv2.imread(image_path)
+
+if img is None:
+    print("Error: Image not found!")
+    print("Please check the image path.")
+else:
+    print("Image loaded successfully!")
+
+    # Rotate 90 degrees clockwise
+    rotated = cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE)
+
+    # Display original and rotated images
+    cv2.imshow("Original Image", img)
+    cv2.imshow("Rotated 90 Degrees Clockwise", rotated)
+
+    # Save the output image
+    output_path = r"C:\Users\sharo\OneDrive\Desktop\ImageRotation\rotated.jpg"
+    cv2.imwrite(output_path, rotated)
+
+    print("Rotation completed successfully!")
+    print("Output saved at:", output_path)
+
+    # Close windows when a key is pressed
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
