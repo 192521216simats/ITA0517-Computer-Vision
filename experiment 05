@@ -1,0 +1,29 @@
+
+import cv2
+
+def analyze_histogram():
+    img = cv2.imread(r"C:\Users\sharo\OneDrive\Pictures\nature image.jpg")
+
+    if img is None:
+        print("Image not found. Check the image path.")
+        return
+
+    blue, green, red = cv2.split(img)
+
+    cv2.imshow("Original Image", img)
+    cv2.imshow("Blue Channel", blue)
+    cv2.imshow("Green Channel", green)
+    cv2.imshow("Red Channel", red)
+
+    hist_blue = cv2.calcHist([blue], [0], None, [256], [0, 256])
+    hist_green = cv2.calcHist([green], [0], None, [256], [0, 256])
+    hist_red = cv2.calcHist([red], [0], None, [256], [0, 256])
+
+    print("Blue channel histogram calculated:", len(hist_blue))
+    print("Green channel histogram calculated:", len(hist_green))
+    print("Red channel histogram calculated:", len(hist_red))
+
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+
+analyze_histogram()
